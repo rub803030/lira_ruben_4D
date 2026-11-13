@@ -112,7 +112,7 @@ del emulador. El icono de nube abre el consumo del servicio web.
 
 El video de la demostración está en
 [`evidencia/prueba_persistencia.mp4`](evidencia/prueba_persistencia.mp4) (72 s,
-720 × 1600, narrado en español). La verificación técnica completa, la
+720 × 1600, sin audio). La verificación técnica completa, la
 transcripción de comandos y la consulta directa al archivo SQLite están en
 [`evidencia/VERIFICACION.md`](evidencia/VERIFICACION.md).
 

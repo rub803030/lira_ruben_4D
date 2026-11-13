@@ -13,8 +13,8 @@
 | Duración | 72.3 segundos |
 | Resolución | 720 × 1600 (vertical) |
 | Video | H.264, 30 fps |
-| Audio | Narración en español (AAC 44.1 kHz) |
-| Tamaño | 2.4 MB |
+| Audio | Sin audio |
+| Tamaño | 1.6 MB |
 
 ### Guion y línea de tiempo
 
