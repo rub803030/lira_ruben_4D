@@ -29,10 +29,10 @@ arquitectura por capas dentro de `lib/`.
 
 ## Evidencia de persistencia
 
-- Video: [`evidencia/prueba_persistencia.mp4`](../evidencia/prueba_persistencia.mp4)
+- Video: [`evidencia/prueba_persistencia.mp4`](evidencia/prueba_persistencia.mp4)
   (72 s, narrado, 720 × 1600).
-- Verificación técnica: [`evidencia/VERIFICACION.md`](../evidencia/VERIFICACION.md).
-- Base extraída del emulador: [`evidencia/tareas_offline.db`](../evidencia/tareas_offline.db).
+- Verificación técnica: [`evidencia/VERIFICACION.md`](evidencia/VERIFICACION.md).
+- Base extraída del emulador: [`evidencia/tareas_offline.db`](evidencia/tareas_offline.db).
 
 Prueba realizada en el emulador `Medium_Phone_API_37.0`: se agregaron dos
 tareas, se detuvo por completo la ejecución (`flutter run` + `force-stop`), se
