@@ -1,0 +1,60 @@
+# ============================================================
+# .gitignore estricto - Actividad 3: Persistencia Local
+# Evita rastrear binarios autogenerados por el hardware y los
+# compiladores nativos de Flutter/Android/iOS.
+# ============================================================
+
+# --- Flutter / Dart ---
+.dart_tool/
+**/.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+**/build/
+/coverage/
+
+# --- Android / Gradle ---
+android/.gradle/
+android/**/.gradle/
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+.cxx/
+
+# --- iOS / macOS ---
+ios/.generated/
+**/ios/.generated/
+ios/Flutter/.last_build_id
+ios/Pods/
+ios/.symlinks/
+macos/Pods/
+macos/.symlinks/
+
+# --- Windows / Linux nativos ---
+windows/flutter/ephemeral/
+linux/flutter/ephemeral/
+.flutter-plugins-dependencies
+
+# --- IDE / SO ---
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+
+# --- Archivos de salida y símbolos ---
+app.*.symbols
+app.*.map.json
+**/doc/api/
