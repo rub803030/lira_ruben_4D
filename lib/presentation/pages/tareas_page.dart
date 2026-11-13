@@ -34,53 +34,11 @@ class _TareasPageState extends State<TareasPage> {
   }
 
   Future<void> _mostrarFormulario() async {
-    final TextEditingController controlador = TextEditingController();
-
     final String? titulo = await showDialog<String>(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          icon: const Icon(Icons.playlist_add_rounded),
-          title: const Text('Nueva tarea'),
-          content: TextField(
-            controller: controlador,
-            autofocus: true,
-            textCapitalization: TextCapitalization.sentences,
-            textInputAction: TextInputAction.done,
-            decoration: const InputDecoration(
-              labelText: 'Titulo de la tarea',
-              hintText: 'Ej. Estudiar persistencia SQLite',
-              border: OutlineInputBorder(),
-            ),
-            onSubmitted: (String valor) {
-              final String limpio = valor.trim();
-              if (limpio.isNotEmpty) {
-                Navigator.of(context).pop(limpio);
-              }
-            },
-          ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancelar'),
-            ),
-            ValueListenableBuilder<TextEditingValue>(
-              valueListenable: controlador,
-              builder: (BuildContext context, TextEditingValue valor, _) {
-                return FilledButton(
-                  onPressed: valor.text.trim().isEmpty
-                      ? null
-                      : () => Navigator.of(context).pop(valor.text.trim()),
-                  child: const Text('Guardar'),
-                );
-              },
-            ),
-          ],
-        );
-      },
+      builder: (BuildContext context) => const _FormularioTareaDialog(),
     );
 
-    controlador.dispose();
     if (titulo == null || titulo.isEmpty || !mounted) {
       return;
     }
@@ -417,6 +375,68 @@ class _Error extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+/// Formulario con estado propio para que el [TextEditingController] viva
+/// exactamente lo mismo que la ruta del dialogo y se libere al finalizar la
+/// animacion de cierre.
+class _FormularioTareaDialog extends StatefulWidget {
+  const _FormularioTareaDialog();
+
+  @override
+  State<_FormularioTareaDialog> createState() => _FormularioTareaDialogState();
+}
+
+class _FormularioTareaDialogState extends State<_FormularioTareaDialog> {
+  final TextEditingController _controlador = TextEditingController();
+
+  @override
+  void dispose() {
+    _controlador.dispose();
+    super.dispose();
+  }
+
+  void _guardar() {
+    final String limpio = _controlador.text.trim();
+    if (limpio.isNotEmpty) {
+      Navigator.of(context).pop(limpio);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      icon: const Icon(Icons.playlist_add_rounded),
+      title: const Text('Nueva tarea'),
+      content: TextField(
+        controller: _controlador,
+        autofocus: true,
+        textCapitalization: TextCapitalization.sentences,
+        textInputAction: TextInputAction.done,
+        decoration: const InputDecoration(
+          labelText: 'Titulo de la tarea',
+          hintText: 'Ej. Estudiar persistencia SQLite',
+          border: OutlineInputBorder(),
+        ),
+        onSubmitted: (_) => _guardar(),
+      ),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Cancelar'),
+        ),
+        ValueListenableBuilder<TextEditingValue>(
+          valueListenable: _controlador,
+          builder: (BuildContext context, TextEditingValue valor, _) {
+            return FilledButton(
+              onPressed: valor.text.trim().isEmpty ? null : _guardar,
+              child: const Text('Guardar'),
+            );
+          },
+        ),
+      ],
     );
   }
 }
