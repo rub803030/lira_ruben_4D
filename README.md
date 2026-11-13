@@ -110,7 +110,22 @@ del emulador. El icono de nube abre el consumo del servicio web.
 4. Verificar que las **2 tareas siguen listadas**: se leyeron desde
    `tareas_offline.db` en la memoria Flash.
 
-El video de la demostración se entrega en la carpeta [`evidencia/`](evidencia/).
+El video de la demostración está en
+[`evidencia/prueba_persistencia.mp4`](evidencia/prueba_persistencia.mp4) (72 s,
+720 × 1600, narrado en español). La verificación técnica completa, la
+transcripción de comandos y la consulta directa al archivo SQLite están en
+[`evidencia/VERIFICACION.md`](evidencia/VERIFICACION.md).
+
+**Resultado comprobado:**
+
+```text
+[OK] Estudiar persistencia SQLite
+[OK] Configurar API REST con JWT
+PERSISTENCIA CONFIRMADA: las dos tareas siguen almacenadas.
+```
+
+Además se reinició el emulador en frío y el archivo `tareas_offline.db` conservó
+las dos filas, demostrando que los datos están en la memoria Flash del AVD.
 
 ---
 
